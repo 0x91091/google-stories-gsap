@@ -6,6 +6,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 window.onload = () => {
+
+    gsap.to('.__preloader', {
+        autoAlpha: 0,
+        y: '-100%',
+        duration: .5,
+        ease: 'Power3.easeOut'
+    })
+
     function intersection(entries, index, slider, rootMargin = '0px') {
 
         let isIntersecting = false
