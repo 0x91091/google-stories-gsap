@@ -50,7 +50,7 @@ window.onload = () => {
         tl.from('.hero_phone', {
             y: 200,
             duration: 1,
-            onComplete: () => heroTl.add(stopHeroTrigger())
+            onComplete: () => { heroTl.add(stopHeroTrigger()), heroTextTrigger() }
         })
 
         return tl
@@ -79,11 +79,25 @@ window.onload = () => {
     }
 
 
+    function heroTextTrigger() {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.hero__footer',
+                start: 'top center',
+                scrub: true
+            }
+        }).to('.hero__container', {
+            backgroundColor: 'white',
+            duration: .25
+        }, '-=2')
+    }
+
     gsap.from('.hero-text', {
         autoAlpha: 0,
         duration: .5,
         delay: .2
     })
+
 
     const tl = gsap.timeline({
         delay: .5
@@ -98,16 +112,26 @@ window.onload = () => {
 
     const heroTl = gsap.timeline().add(intro())
 
-    let interSecting
     const sliderLeft = document.querySelectorAll('.slider_left ._slide')
     const sliderRight = document.querySelectorAll('.slider_right img')
 
     sliderLeft.forEach((e, i) => {
-        interSecting = intersection(e, i, sliderRight)
+        intersection(e, i, sliderRight)
     })
 
 
+
+
     function sliderStopTrigger() {
+        return gsap.timeline({
+            scrollTrigger: {
+                trigger: '.slider_right',
+                start: 'top top',
+                end: () => `+=${document.querySelector('.__slider').offsetHeight}`,
+                scrub: true,
+                pin: true
+            }
+        })
 
     }
 
