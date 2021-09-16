@@ -20,9 +20,6 @@ body {
     line-height: 1;
     overflow: auto;
 }
-.__root:not(.loaded) {
-    opacity: 0;
-}
 
 img, svg, video {
     display: inline-block;

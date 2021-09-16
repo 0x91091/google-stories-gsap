@@ -5,14 +5,16 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 
-window.onload = () => {
+window.addEventListener('load', () => {
 
     gsap.to('.__preloader', {
         autoAlpha: 0,
         y: '-100%',
         duration: .5,
         ease: 'Power3.easeOut',
-        onComplete: () => document.querySelector('.__root').classList.add('loaded')
+        onComplete: () => {
+            document.querySelector('.__root').style.opacity = '1'
+        }
     })
 
     function intersection(entries, index, slider, rootMargin = '0px') {
@@ -146,4 +148,4 @@ window.onload = () => {
 
     const sliderTl = gsap.timeline().add(sliderStopTrigger())
 
-}
+})
