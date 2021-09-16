@@ -11,7 +11,8 @@ window.onload = () => {
         autoAlpha: 0,
         y: '-100%',
         duration: .5,
-        ease: 'Power3.easeOut'
+        ease: 'Power3.easeOut',
+        onComplete: () => document.querySelector('.__root').classList.add('loaded')
     })
 
     function intersection(entries, index, slider, rootMargin = '0px') {
