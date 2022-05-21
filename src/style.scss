@@ -16,15 +16,37 @@ body {
     background: #fff;
     color: #000;
     overflow: auto;
+    max-width: 100vw;
     font-family: 'Poppins', sans-serif;
     line-height: 1;
-    overflow: auto;
 }
 
 img, svg, video {
     display: inline-block;
     max-width: 100%;
     vertical-align: middle;
+}
+.__root {
+    overflow-x: hidden;
+}
+
+.__warn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #285ede;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    
+    display: none;
+    opacity: 0;
+    z-index: -99;
 }
 
 .__preloader {
@@ -251,5 +273,20 @@ img, svg, video {
     color: #fff;
     font-size: 3rem;
     font-weight: 600;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    body {
+        overflow: hidden;
+        position: relative;
+    }
+    .__root {
+        display: none;
+    }
+    .__warn {
+        display: flex;
+        z-index: 9999;
+        opacity: 1;
+    }
 }
 

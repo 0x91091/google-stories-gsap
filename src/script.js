@@ -148,4 +148,10 @@ window.addEventListener('load', () => {
 
     const sliderTl = gsap.timeline().add(sliderStopTrigger())
 
+    const reload = () => {
+        return location.reload()
+    }
+
+    window.addEventListener('orientationchange', reload)
+
 })
